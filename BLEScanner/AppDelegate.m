@@ -56,10 +56,10 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
             [self.statusLabel setStringValue:@"Resetting"];
             break;
         case CBCentralManagerStateUnauthorized:
-            [self.statusLabel setStringValue:@"Unauthorised"];
+            [self.statusLabel setStringValue:@"Unauthorized"];
             break;
         case CBCentralManagerStateUnsupported:
-            [self.statusLabel setStringValue:@"Unsupported"];
+            [self.statusLabel setStringValue:@"Host, BLE Unsupported"];
             break;
         case CBCentralManagerStateUnknown:
         default:

@@ -14,21 +14,7 @@
 		539F5A26183801AB00CDFCF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 539F5A25183801AB00CDFCF5 /* AppDelegate.m */; };
 		539F5A29183801AB00CDFCF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539F5A27183801AB00CDFCF5 /* MainMenu.xib */; };
 		539F5A2B183801AB00CDFCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539F5A2A183801AB00CDFCF5 /* Images.xcassets */; };
-		539F5A32183801AB00CDFCF5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539F5A31183801AB00CDFCF5 /* XCTest.framework */; };
-		539F5A33183801AB00CDFCF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539F5A12183801AB00CDFCF5 /* Cocoa.framework */; };
-		539F5A3B183801AB00CDFCF5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 539F5A39183801AB00CDFCF5 /* InfoPlist.strings */; };
-		539F5A3D183801AB00CDFCF5 /* BLEScannerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 539F5A3C183801AB00CDFCF5 /* BLEScannerTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		539F5A34183801AB00CDFCF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 539F5A07183801AB00CDFCF5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 539F5A0E183801AB00CDFCF5;
-			remoteInfo = BLEScanner;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		539F5A0F183801AB00CDFCF5 /* iBeacon Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBeacon Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,11 +31,7 @@
 		539F5A25183801AB00CDFCF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		539F5A28183801AB00CDFCF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		539F5A2A183801AB00CDFCF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		539F5A30183801AB00CDFCF5 /* BLEScannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLEScannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		539F5A31183801AB00CDFCF5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		539F5A38183801AB00CDFCF5 /* BLEScannerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BLEScannerTests-Info.plist"; sourceTree = "<group>"; };
-		539F5A3A183801AB00CDFCF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		539F5A3C183801AB00CDFCF5 /* BLEScannerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEScannerTests.m; sourceTree = "<group>"; };
 		539F5A4B183814B800CDFCF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		539F5A4D183814B800CDFCF5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		539F5A4F183814B800CDFCF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -64,15 +46,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		539F5A2D183801AB00CDFCF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				539F5A33183801AB00CDFCF5 /* Cocoa.framework in Frameworks */,
-				539F5A32183801AB00CDFCF5 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				539F5A18183801AB00CDFCF5 /* BLEScanner */,
-				539F5A36183801AB00CDFCF5 /* BLEScannerTests */,
 				539F5A11183801AB00CDFCF5 /* Frameworks */,
 				539F5A10183801AB00CDFCF5 /* Products */,
 			);
@@ -90,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				539F5A0F183801AB00CDFCF5 /* iBeacon Scanner.app */,
-				539F5A30183801AB00CDFCF5 /* BLEScannerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,24 +113,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		539F5A36183801AB00CDFCF5 /* BLEScannerTests */ = {
-			isa = PBXGroup;
-			children = (
-				539F5A3C183801AB00CDFCF5 /* BLEScannerTests.m */,
-				539F5A37183801AB00CDFCF5 /* Supporting Files */,
-			);
-			path = BLEScannerTests;
-			sourceTree = "<group>";
-		};
-		539F5A37183801AB00CDFCF5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				539F5A38183801AB00CDFCF5 /* BLEScannerTests-Info.plist */,
-				539F5A39183801AB00CDFCF5 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,24 +133,6 @@
 			productReference = 539F5A0F183801AB00CDFCF5 /* iBeacon Scanner.app */;
 			productType = "com.apple.product-type.application";
 		};
-		539F5A2F183801AB00CDFCF5 /* BLEScannerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 539F5A43183801AB00CDFCF5 /* Build configuration list for PBXNativeTarget "BLEScannerTests" */;
-			buildPhases = (
-				539F5A2C183801AB00CDFCF5 /* Sources */,
-				539F5A2D183801AB00CDFCF5 /* Frameworks */,
-				539F5A2E183801AB00CDFCF5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				539F5A35183801AB00CDFCF5 /* PBXTargetDependency */,
-			);
-			name = BLEScannerTests;
-			productName = BLEScannerTests;
-			productReference = 539F5A30183801AB00CDFCF5 /* BLEScannerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -206,11 +141,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Liam Nichols";
-				TargetAttributes = {
-					539F5A2F183801AB00CDFCF5 = {
-						TestTargetID = 539F5A0E183801AB00CDFCF5;
-					};
-				};
 			};
 			buildConfigurationList = 539F5A0A183801AB00CDFCF5 /* Build configuration list for PBXProject "BLEScanner" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -226,7 +156,6 @@
 			projectRoot = "";
 			targets = (
 				539F5A0E183801AB00CDFCF5 /* BLEScanner */,
-				539F5A2F183801AB00CDFCF5 /* BLEScannerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,14 +172,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		539F5A2E183801AB00CDFCF5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				539F5A3B183801AB00CDFCF5 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -263,23 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		539F5A2C183801AB00CDFCF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				539F5A3D183801AB00CDFCF5 /* BLEScannerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		539F5A35183801AB00CDFCF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 539F5A0E183801AB00CDFCF5 /* BLEScanner */;
-			targetProxy = 539F5A34183801AB00CDFCF5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		539F5A1B183801AB00CDFCF5 /* InfoPlist.strings */ = {
@@ -304,14 +209,6 @@
 				539F5A28183801AB00CDFCF5 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		539F5A39183801AB00CDFCF5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				539F5A3A183801AB00CDFCF5 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -413,46 +310,6 @@
 			};
 			name = Release;
 		};
-		539F5A44183801AB00CDFCF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BLEScanner.app/Contents/MacOS/BLEScanner";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BLEScanner/BLEScanner-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "BLEScannerTests/BLEScannerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		539F5A45183801AB00CDFCF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BLEScanner.app/Contents/MacOS/BLEScanner";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BLEScanner/BLEScanner-Prefix.pch";
-				INFOPLIST_FILE = "BLEScannerTests/BLEScannerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -470,15 +327,6 @@
 			buildConfigurations = (
 				539F5A41183801AB00CDFCF5 /* Debug */,
 				539F5A42183801AB00CDFCF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		539F5A43183801AB00CDFCF5 /* Build configuration list for PBXNativeTarget "BLEScannerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				539F5A44183801AB00CDFCF5 /* Debug */,
-				539F5A45183801AB00CDFCF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
