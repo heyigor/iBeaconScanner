@@ -7,6 +7,7 @@
 //
 
 @import IOBluetooth;
+@import CoreBluetooth;
 
 #import "AppDelegate.h"
 
@@ -47,51 +48,51 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
     switch (central.state)
     {
         case CBCentralManagerStatePoweredOff:
-            [self.statusLabel setStringValue:@"Powered Off"];
+            (self.statusLabel).stringValue = @"Powered Off";
             break;
         case CBCentralManagerStatePoweredOn:
-            [self.statusLabel setStringValue:@"Powered On"];
+            (self.statusLabel).stringValue = @"Powered On";
             break;
         case CBCentralManagerStateResetting:
-            [self.statusLabel setStringValue:@"Resetting"];
+            (self.statusLabel).stringValue = @"Resetting";
             break;
         case CBCentralManagerStateUnauthorized:
-            [self.statusLabel setStringValue:@"Unauthorized"];
+            (self.statusLabel).stringValue = @"Unauthorized";
             break;
         case CBCentralManagerStateUnsupported:
-            [self.statusLabel setStringValue:@"Host, BLE Unsupported"];
+            (self.statusLabel).stringValue = @"Host, BLE Unsupported";
             break;
         case CBCentralManagerStateUnknown:
         default:
-            [self.statusLabel setStringValue:@"Unknown"];
+            (self.statusLabel).stringValue = @"Unknown";
             break;
     }
 }
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSData *advData = [advertisementData objectForKey:@"kCBAdvDataManufacturerData"];
+    NSData *advData = advertisementData[@"kCBAdvDataManufacturerData"];
     if ([self advDataIsBeacon:advData])
     {
         NSMutableDictionary *beacon = [NSMutableDictionary dictionaryWithDictionary:[self getBeaconInfoFromData:advData]];
         
         //rssi
-        [beacon setObject:RSSI forKey:@"RSSI"];
+        beacon[@"RSSI"] = RSSI;
 
         //peripheral uuid
-        [beacon setObject:peripheral.identifier.UUIDString forKey:@"deviceUUID"];
+        NSString *uniqueUUID = peripheral.identifier.UUIDString;
+        beacon[@"deviceUUID"] = uniqueUUID;
         
         //distance
-        NSNumber *distance = [self calculatedDistance:[beacon objectForKey:@"power"] RSSI:RSSI];
+        NSNumber *distance = [self calculatedDistance:beacon[@"power"] RSSI:RSSI];
         if (distance) {
-            [beacon setObject:distance forKey:@"distance"];
+            beacon[@"distance"] = distance;
         }
         
         //proximity
-        [beacon setObject:[self proximityFromDistance:distance] forKey:@"proximity"];
+        beacon[@"proximity"] = [self proximityFromDistance:distance];
         
         //combined uuid
-        NSString *uniqueUUID = peripheral.identifier.UUIDString;
         NSString *beaconUUID = beacon[@"uuid"];
         
         if (beaconUUID) {
@@ -99,7 +100,7 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
         }
 
         //add to beacon dictionary
-        [self.foundBeacons setObject:beacon forKey:uniqueUUID];
+        (self.foundBeacons)[uniqueUUID] = beacon;
     }
 }
 
@@ -107,8 +108,8 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
 //I've seen this method mentioned a couple of times but cannot verify its accuracy
 - (NSNumber *)calculatedDistance:(NSNumber *)txPowerNum RSSI:(NSNumber *)RSSINum
 {
-    int txPower = [txPowerNum intValue];
-    double rssi = [RSSINum doubleValue];
+    int txPower = txPowerNum.intValue;
+    double rssi = RSSINum.doubleValue;
     
     if (rssi == 0) {
         return nil; // if we cannot determine accuracy, return nil.
@@ -179,7 +180,7 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
         if (duration == 0)
         {
             duration = kScanTimeInterval;
-            [self.durationTextField setDoubleValue:kScanTimeInterval];
+            (self.durationTextField).doubleValue = kScanTimeInterval;
         }
         
 
@@ -211,8 +212,8 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
 
 - (void)timerDidFire
 {
-    NSLog(@"found beacons during scan: %@",[self.foundBeacons allValues]);
-    self.beacons = [[self.foundBeacons allValues] mutableCopy];
+    NSLog(@"found beacons during scan: %@",(self.foundBeacons).allValues);
+    self.beacons = [(self.foundBeacons).allValues mutableCopy];
     [self.beacons sortUsingDescriptors:self.tableView.sortDescriptors];
     
     [self.foundBeacons removeAllObjects];
@@ -270,17 +271,17 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
         if (canScan)
         {
             [self.scanButton setEnabled:YES];
-            [self.scanButton setTitle:@"Start Scanning"];
-            [self.scanButton setTarget:self];
-            [self.scanButton setAction:@selector(startScanning)];
+            (self.scanButton).title = @"Start Scanning";
+            (self.scanButton).target = self;
+            (self.scanButton).action = @selector(startScanning);
             [self.repeatCheckbox setEnabled:YES];
         }
         else
         {
             [self.scanButton setEnabled:NO];
-            [self.scanButton setTitle:@"Start Scanning"];
-            [self.scanButton setTarget:self];
-            [self.scanButton setAction:@selector(startScanning)];
+            (self.scanButton).title = @"Start Scanning";
+            (self.scanButton).target = self;
+            (self.scanButton).action = @selector(startScanning);
             [self.repeatCheckbox setEnabled:NO];
         }
     }
@@ -316,36 +317,36 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
         result = [[NSTextField alloc] initWithFrame:CGRectZero];
         [result setBordered:NO];
         [result setSelectable:NO];
-        [result setBackgroundColor:[NSColor clearColor]];
-        [result setAlignment:NSCenterTextAlignment];
-        [result setIdentifier:@"MyView"];
+        result.backgroundColor = [NSColor clearColor];
+        result.alignment = NSCenterTextAlignment;
+        result.identifier = @"MyView";
         [result setEditable:NO];
     }
     
-    NSDictionary *beacon = [self.beacons objectAtIndex:row];
+    NSDictionary *beacon = (self.beacons)[row];
     if ([tableColumn.identifier isEqualToString:@"devuuid"])
-        result.stringValue = [beacon objectForKey:@"deviceUUID"];
+        result.stringValue = beacon[@"deviceUUID"];
     
     if ([tableColumn.identifier isEqualToString:@"uuid"])
-        result.stringValue = [beacon objectForKey:@"uuid"];
+        result.stringValue = beacon[@"uuid"];
     
     if ([tableColumn.identifier isEqualToString:@"major"])
-        result.stringValue = [[beacon objectForKey:@"major"] stringValue];
+        result.stringValue = [beacon[@"major"] stringValue];
     
     if ([tableColumn.identifier isEqualToString:@"minor"])
-        result.stringValue = [[beacon objectForKey:@"minor"] stringValue];
+        result.stringValue = [beacon[@"minor"] stringValue];
     
     if ([tableColumn.identifier isEqualToString:@"power"])
-        result.stringValue = [self decibelStringFromNumber:[beacon objectForKey:@"power"]];
+        result.stringValue = [self decibelStringFromNumber:beacon[@"power"]];
     
     if ([tableColumn.identifier isEqualToString:@"rssi"])
-        result.stringValue = [self decibelStringFromNumber:[beacon objectForKey:@"RSSI"]];
+        result.stringValue = [self decibelStringFromNumber:beacon[@"RSSI"]];
     
     if ([tableColumn.identifier isEqualToString:@"distance"])
-        result.stringValue = [self distanceStringFromNumber:[beacon objectForKey:@"distance"]];
+        result.stringValue = [self distanceStringFromNumber:beacon[@"distance"]];
     
     if ([tableColumn.identifier isEqualToString:@"proximity"])
-        result.stringValue = [beacon objectForKey:@"proximity"];
+        result.stringValue = beacon[@"proximity"];
     
     
     // return the result.
@@ -355,13 +356,13 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
 
 - (NSString *)decibelStringFromNumber:(NSNumber *)dbVal
 {
-    return [NSString stringWithFormat:@"%idB",[dbVal intValue]];
+    return [NSString stringWithFormat:@"%idB",dbVal.intValue];
 }
 
 - (NSString *)distanceStringFromNumber:(NSNumber *)distance
 {
     if (distance) {
-        return [NSString stringWithFormat:@"%.2fm",[distance doubleValue]];
+        return [NSString stringWithFormat:@"%.2fm",distance.doubleValue];
     }
     return @"-";
 }
@@ -386,14 +387,14 @@ static const NSTimeInterval kScanTimeInterval = 1.0;
            forRow:(NSInteger)row {
     
     if (row % 2 == 1) {
-        [rowView setBackgroundColor:[NSColor colorWithWhite:0.9294117647 alpha:1.0]];
+        rowView.backgroundColor = [NSColor colorWithWhite:0.9294117647 alpha:1.0];
     }
     
 }
 
 -(void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors
 {
-    NSArray *newDescriptors = [tableView sortDescriptors];
+    NSArray *newDescriptors = tableView.sortDescriptors;
 
     [self.beacons sortUsingDescriptors:newDescriptors];
 
